@@ -1,6 +1,7 @@
 import http from "http";
 import { userLogin } from "../day_05/controller/login.js";
 import { userRegistration } from "../day_05/controller/register.js";
+import { changePassword } from "../day_05/controller/changePassword.js";
 const PORT = 5500;
 
 const server = http.createServer((req, res) => {
@@ -24,6 +25,19 @@ const server = http.createServer((req, res) => {
         req.on("end", async () => {
             const userData = JSON.parse(body);
             const response = await userRegistration(userData, "./users.json");
+            res.writeHead(200, { "Content-type": "application/json" });
+            res.end(JSON.stringify(response));
+
+        })
+
+    } else if (req.url === "/change-password" && req.method === "POST") {
+        let body = "";
+        req.on("data", (dataChunk) => {
+            body += dataChunk.toString();
+        })
+        req.on("end", async () => {
+            const userData = JSON.parse(body);
+            const response = await changePassword(userData, "./users.json");
             res.writeHead(200, { "Content-type": "application/json" });
             res.end(JSON.stringify(response));
 
