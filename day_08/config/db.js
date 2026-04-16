@@ -9,4 +9,5 @@ const dbConnect = async()=>{
         console.log("Connection Error",error.message); 
     }
 }
-dbConnect();
+// dbConnect();
+export default dbConnect;
