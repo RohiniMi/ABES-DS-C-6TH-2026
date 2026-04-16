@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-const MONGO_URI = "mongodb+srv://user:admin@crud.hhlnaog.mongodb.net/?appName=crud";
+const MONGO_URI = "mongodb+srv://user:admin@crud.xzqfcqf.mongodb.net/?appName=crud";
 const DB_NAME = "users";
 
 const client = new MongoClient(MONGO_URI);
@@ -12,6 +12,6 @@ const dbConnect = async () => {
         console.log("DB connection Error", error.message);
     }
 }
+dbConnect();
 export default dbConnect;
-// dbConnect();
 
